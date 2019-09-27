@@ -1,0 +1,8 @@
+# Virtual ENV
+venv/
+
+# Pycharm Auto Generated DIR
+.idea/
+
+# Python Auto Generated DIR
+__pycache__/

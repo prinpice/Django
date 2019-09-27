@@ -1,0 +1,34 @@
+<div id="scoreUI">
+    <div id="scoreForm">
+        {# form태그 안에서 enter를 사용하면 자동으로 submit이 이뤄지기 때문에 따로 버튼이 필요 없다#}
+        <form action="{% url 'movies:score_create' movie.id %}" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <label for="score">평점매기기: </label>
+                <input type="text" class='ml-3' id="score_content" name="content" placeholder="한줄평을 써주세요" minlength="10px" autofocus>
+                {# autofocus : detail페이지에 오면 자동으로 댓글입력창에 커서가 위치한다. #}
+                <input type="number" class="form-control ml-2" min="0" max="5" name="score" step="any"
+                       style="width: 60px">
+                <button type="submit" class="ml-2 btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div id="scoreList">
+        {% if scores %}
+            {% for score in scores %}
+                <hr>
+                <div class="row ml-5">
+                    {{ score.content }}, {{ score.score }}
+                    {# 순서대로 넣거나 명시적으로 써줘야함 #}
+                    <form action="{% url 'movies:score_delete' movie_id=movie.id score_id=score.id %}"
+                          method="post">
+                        {% csrf_token %}
+                        <button type="submit" onclick="return confirm('삭제함?')">[x]</button>
+                    </form>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+
+    </div>
+</div>
