@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="02_layout.css">
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Jua|Sunflower:300" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96x96.png">
+    <title>영화추천사이트</title>
+</head>
+<body>
+
+    <!-- Navigation Bar start -->
+    <nav class="navbar navbar-expand-lg navbar-default sticky-top navbar-light bg-light">
+        <a class="navbar-brand" href="#">영화추천시스템</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">친구평점보러가기</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Login</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <!-- Navigation Bar end-->
+
+    <!-- Header start -->
+    <section id="header">
+        <div class="container header-title">
+            <h2>당신에게 어울리는 영화를 추천해드립니다.</h2>
+        </div>
+    </section>
+    <!-- Header end -->
+
+    <!-- movielist start -->
+    <section id="movielist">
+        <div class="container">
+            <!-- subtitle -->
+            <h3 class="subtitle">영화 목록</h3>
+
+            <!-- cardview -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 card-setting">
+                        <div class="row">
+                            <div class="card col-11">
+                                <img src="assets/20184105.jpg" class="card-img-top" alt="말모이">
+                                <div class="card-body">
+                                    <h4>말모이 <span class="badge badge-secondary">8.9</span></h4>
+                                    <hr>
+                                    <p class="card-text">드라마</p>
+                                    <p class="card-text">개봉일 : 2019.01.09</p>
+                                    <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=167699" target="_blank" class="btn btn-success">영화정보 보러가기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 card-setting">
+                        <div class="row">
+                            <div class="card col-11">
+                                <img src="assets/20186324.jpg" class="card-img-top" alt="언더독">
+                                <div class="card-body">
+                                    <h4>언더독 <span class="badge badge-info">9.48</span></h4>
+                                    <hr>
+                                    <p class="card-text">애니메이션</p>
+                                    <p class="card-text">개봉일 : 2019.01.16</p>
+                                    <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=144318" target="_blank" class="btn btn-success">영화정보 보러가기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 card-setting">
+                        <div class="row">
+                            <div class="card col-11">
+                                <img src="assets/20189463.jpg" class="card-img-top" alt="주먹왕 랄프2">
+                                <div class="card-body">
+                                    <h4>주먹왕 랄프2 <span class="bg-white"><span class="badge badge-info">9.01</span></span></h4>
+                                    <hr>
+                                    <p class="card-text">애니메이션, 모험</p>
+                                    <p class="card-text">개봉일 : 2019.01.03</p>
+                                    <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=152632" target="_blank" class="btn btn-success">영화정보 보러가기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 card-setting">
+                        <div class="row">
+                            <div class="card col-11">
+                                <img src="assets/20176251.jpg" class="card-img-top" alt="내안의 그놈">
+                                <div class="card-body">
+                                    <h4>내안의 그놈 <span class="badge badge-secondary">8.86</span></h4>
+                                    <hr>
+                                    <p class="card-text">판타지, 코미디</p>
+                                    <p class="card-text">개봉일 : 2019.01.09</p>
+                                    <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=164172" target="_blank" class="btn btn-success">영화정보 보러가기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 card-setting">
+                        <div class="row">
+                            <div class="card col-11">
+                                <img src="assets/20180290.jpg" class="card-img-top" alt="아쿠아맨">
+                                <div class="card-body">
+                                    <h4>아쿠아맨 <span class="badge badge-secondary">8.78</span></h4>
+                                    <hr>
+                                    <p class="card-text">액션, 모험, SF</p>
+                                    <p class="card-text">개봉일 : 2018.12.19</p>
+                                    <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=151153" target="_blank" class="btn btn-success">영화정보 보러가기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 card-setting">
+                        <div class="row">
+                            <div class="card col-11">
+                                <img src="assets/20182544.jpg" class="card-img-top" alt="글래스">
+                                <div class="card-body">
+                                    <h4>글래스 <span class="badge badge-secondary">8.11</span></h4>
+                                    <hr>
+                                    <p class="card-text">드라마, 미스터리</p>
+                                    <p class="card-text">개봉일 : 2019.01.17</p>
+                                    <a href="https://movie.naver.com/movie/bi/mi/basic.nhn?code=163826" target="_blank" class="btn btn-success">영화정보 보러가기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- movielist end -->
+
+    <!-- Footer start -->
+    <section id="footer">
+            <div class="row">
+                <p class="footer-text">&copy; 2019 JCM</p>
+                <a class="btn ml-auto" href='#header'>
+                    <img class="btn-image" src="btn_f_top.png" alt="">
+                </a>
+            </div>
+    </section>
+    <!-- Footer end -->
+
+</body>
+</html>
