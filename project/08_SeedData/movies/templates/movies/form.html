@@ -1,0 +1,23 @@
+{% extends 'movies/base.html' %}
+
+{% block title %}
+영화정보입력
+{% endblock %}
+
+{% block body %}
+    <h1>영화정보</h1>
+    <form action="
+    {% if 'edit' in request.get_full_path %}
+        {% url 'movies:edit' form.instance.id %}
+    {% else %}
+        {% url 'movies:new' %}
+    {% endif %}
+    " method="POST">
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-outline-success float-right">제출</button>
+        {% csrf_token %}
+    </form>
+
+{% endblock %}
+
+

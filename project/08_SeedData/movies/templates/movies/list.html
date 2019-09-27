@@ -1,0 +1,32 @@
+{% extends 'movies/base.html' %}
+
+{% block title %}
+영화 목록
+{% endblock %}
+
+{% block body %}
+<p class="text-right"><a href="{% url 'movies:new' %}" class="btn btn-outline-success btn-lg sub" role="button">새 영화 등록</a></p>
+{% if movies %}
+        <section class="card-columns">
+            
+            {% for movie in movies %}
+                <article class="card mb-2">
+                    {% if movie.poster_url %}
+                        <img src="{{ movie.poster_url }}"
+                             alt="{{ movie.poster_url }}"
+                             class="card-img-top image-fluid">
+                    {% else %}
+                        <img src="http://picsum.photos/32{{ forloop.counter }}/580/?random"
+                             alt="random-image-{{ forloop.counter }}"
+                             class="card-img-top image-fluid">
+                    {% endif %}
+                        <a href="{% url 'movies:detail' movie.id %}">{{ movie.title }}</a>
+                    <!--<div class="card-body">-->
+                    <!--      fa-2x/ 3x icon크기 키우기-->
+                    <!--<i class="{{ posting.icon }} fa-2x"></i>-->
+                    <!--</div>-->
+                </article>
+            {% endfor %}
+        </section>
+    {% endif %}
+{% endblock %}
