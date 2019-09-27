@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+영화 상세 정보::{{movie.title}}
+{% endblock %}
+
+{% block body %}
+<form>
+    <div class="container">
+        <h1>영화 정보 조회</h1>
+        <div class="row">
+            <p class="col-2">영화 제목:</p>
+            <p class="col-10">{{movie.title}}<p>
+        </div>
+        <hr>
+        <div class="row">
+            <p class="col-2">누적 관객수:</p>
+            <p class="col-10">{{movie.audience}}</p>
+        </div>
+        <hr>
+        <div class="row">
+            <p class="col-2">장르:</p>
+            <p class="col-10">{{movie.genre}}</p>
+        </div>
+        <hr>
+        <div class="row">
+            <p class="col-2">평점:</p>
+            <p class="col-10">{{movie.score}}</p>
+        </div>
+        <hr>
+        <div class="row">
+            <p class="col-2">포스터 이미지 URL:</p>
+            <p class="col-10">{{movie.poster_url}}</p>
+        </div>
+        <hr>
+        <div class="row">
+            <p class="col-2">영화 소개</p>
+            <pre class="col-10">{{movie.description}}</pre>
+        </div>
+        <hr>
+        <a href="{% url 'index' %}" class="detail-a btn btn-outline-success">목록</a>
+        <a href="{% url 'delete' movie.id %}" class="detail-a btn btn-outline-success">삭제</a>
+        <a href="{% url 'edit' movie.id %}" class="detail-a btn btn-outline-success">수정</a>
+    </div>
+</form>
+
+{% endblock %}

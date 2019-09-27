@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+영화 신규 등록
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>영화 정보 등록</h1>
+    <form action="{% url 'create' %}" method="POST">
+        <div class="form-group">
+            <label>영화 제목</label>
+            <input type="text" class="form-control" name="title" placeholder="영화 제목을 입력하세요">
+        </div>
+        <div class="form-group">
+            <label>누적 관객수</label>
+            <input type="number" class="form-control" name="audience" placeholder="누적 관객수를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label>장르</label>
+            <input type="text" class="form-control" name="genre" placeholder="장르를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label>평점</label>
+            <input type="number" step="any"class="form-control" name="score" placeholder="평점을 입력하세요">
+        </div>
+        <div class="form-group">
+            <label>포스터 이미지 URL</label>
+            <input type="text" class="form-control" name="poster_url" placeholder="URL을 입력하세요">
+        </div>
+        <div class="form-group">
+            <label>영화 소개</label>
+            <textarea class="form-control" name="description" rows="10" placeholder="영화를 소개해주세요"></textarea>
+        </div>
+        <button type="submit" class="btn btn-outline-success">영화 등록</button>
+        {% csrf_token %}
+    </form>
+</div>
+{% endblock %}

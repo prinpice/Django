@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+영화 정보 조회
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <h1>영화 목록</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in movies %}
+                <tr>
+                    <th scope="row">{{ movie.id }}</th>
+                    <td><a href="{% url 'detail' movie.id %}">{{ movie.title }}</a></td>
+                    <td>{{ movie.score }}</td>
+                </tr>
+            {% endfor %}
+      </tbody>
+    </table>
+    <p><a href="{% url 'new' %}" class="btn btn-outline-success btn-lg sub" role="button">새 영화 등록</a></p>
+</div>
+
+
+{% endblock %}
