@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+
+{% block body %}
+
+<form class="mb-5">
+    <h1>영화 정보 조회</h1>
+    <div class="row">
+        <p class="col-2">영화 제목:</p>
+        <p class="col-10">{{movie.title}}<p>
+    </div>
+    <hr>
+    <div class="row">
+        <p class="col-2">누적 관객수:</p>
+        <p class="col-10">{{movie.audience}}</p>
+    </div>
+    <hr>
+    <div class="row">
+        <p class="col-2">장르:</p>
+        <p class="col-10">{{movie.genre}}</p>
+    </div>
+    <hr>
+    <div class="row">
+        <p class="col-2">포스터 이미지 URL:</p>
+        <p class="col-10">{{ movie.poster_url }}</p>
+    </div>
+    <hr>
+    <div class="row">
+        <p class="col-2">영화 소개</p>
+        <pre class="col-10">{{ movie.description }}</pre>
+    </div>
+    <hr>
+    <a href="{% url 'movies:list' %}" class="detail-a btn btn-outline-success">목록</a>
+    <a href="" class="detail-a btn btn-outline-success disabled">삭제</a>
+    <a href="" class="detail-a btn btn-outline-success disabled">수정</a>
+</form>
+
+<form class="mb-2 ml-3" method="POST" action="{% url 'movies:score_create' movie.id %}">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-10"><div class="row">{% bootstrap_form score_form %}</div></div>
+    <div class="col-2"><button type="submit" class="align-middle btn btn-success ml-3">작성</button></div>
+    
+  </div>
+  
+</form>
+
+
+<hr>
+
+{% for score in movie.score_set.all %}
+  <div class="row card-text">
+    <p><strong>{{ score.user.username }}</strong>   {{ score.content }}  {{ score.value }}</p>
+    {% if score.user == request.user %}
+    <form action="{% url 'movies:score_delete' movie.id score.id %}" method="POST">
+      <button class="ml-3 btn btn-danger">삭제</button>
+      {% csrf_token %}
+    </form>
+    {% endif %}
+  </div>
+  {% empty %}
+  <div>댓글이 없습니다.</div>
+{% endfor %}
+
+
+
+
+{% endblock %}

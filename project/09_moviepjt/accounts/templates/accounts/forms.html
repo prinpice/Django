@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load bootstrap4 %}
+
+{% block body %}
+<form method="POST">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% if sign == "up" %}
+    <input class="btn btn-success" type="submit" value="Sign up">
+  {% else %}
+    <input class="btn btn-success" type="submit" value="Sign in">
+  {% endif %}
+</form>
+
+{% if sign == "up" %}
+  <p class="mt-5"> If you already have account</p>
+  <a href="{% url 'accounts:login' %}" class="btn btn-success">Sign in</a>
+{% elif sign == "in" %}
+  <p class="mt-5"> If you don't have account</p>
+  <a href="{% url 'accounts:signup' %}" class="btn btn-success">Sign up</a>
+{% endif %}
+
+{% endblock %}

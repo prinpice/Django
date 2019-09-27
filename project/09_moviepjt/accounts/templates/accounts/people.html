@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<form class="mb-5">
+    <h1유저화 정보 조회</h1>
+    <div class="row">
+      <p class="col-2">ID:</p>
+      <p class="col-10">
+        {{people.username}}
+        <!-- 만약 현재 접속한 유저가 해당 페이지의 유저를이미 팔로우 한 경우, -->
+        {% if user != people %}
+          {% if user in people.followings.all %}
+            <a class="btn btn-outline-primary" href="{% url 'accounts:follow' people.id %}">언팔로우</a>
+          {% else %}
+            <a class="btn btn-primary" href="{% url 'accounts:follow' people.id %}">팔로우</a>
+          {% endif %}
+        {% endif %} 
+      <p>
+    </div>
+    <hr>
+    <div class="row">
+        <p class="col-2">이메일:</p>
+        <p class="col-10">{{people.email}}</p>
+    </div>
+    <hr>
+    <div class="row">
+        <p class="col-2">following:</p>
+        <p class="col-10"><a href="{% url 'accounts:followings' people.id %}">{{followings_count}}</a></p>
+    </div>
+    <hr>
+    <div class="row">
+        <p class="col-2">follower:</p>
+        <p class="col-10"><a href="{% url 'accounts:followers' people.id %}">{{followers_count}}</a></p>
+    </div>
+    <hr>
+    
+    
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">영화제목</th>
+      <th scope="col">한줄평</th>
+      <th scope="col">평점</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for score in scores %}
+      <tr>
+        <th scope="row">{{ score.movie }}</th>
+        <td>{{ score.content }}</td>
+        <td>{{ score.value }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+    
+    
+    
+    
+    <a href="{% url 'accounts:user_list' %}" class="detail-a btn btn-outline-success">목록</a>
+    
+</form>
+
+{% endblock %}
