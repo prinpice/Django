@@ -6,6 +6,10 @@ c9의 workspace에서 작성됨
 
 * 다양한 버전의 파이썬을 관리하는 도구
 
+* url : `zzu.li/install-pyenv`
+
+* 검색 : how to install pyenv on ubuntu
+
 * terminal에 pyenv, pyenv-virtualenv 설치
 
   ```git
