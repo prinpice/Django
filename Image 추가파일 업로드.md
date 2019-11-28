@@ -79,26 +79,27 @@
 ## Image Process
 
 * 컴퓨터가 가장 힘들어하는 작업
+
 * **resource는 전부 돈. 이미지 크기마다 비용이 있고 주고받는 것에 모두 비용이 발생함**
+
+* `django-imagekit`설치 및 `settings.py`의 `installedapp`에 추가
+
+  ```
+  $ pip install django-imagekit
+  ```
+
+  ```python
+  ...
+  
+  INSTALLED_APPS = [
+      ...,
+      'imagekit',
+  ]
+  ```
 
 ### Image resizing
 
-1. `django-imagekit`설치 및 `settings.py`의 `installedapp`에 추가
-
-   ```
-   $ pip install django-imagekit
-   ```
-
-   ```python
-   ...
-   
-   INSTALLED_APPS = [
-       ...,
-       'imagekit',
-   ]
-   ```
-
-2. db저장(`models.py`)
+* db저장(`models.py`)
 
    * `ImageField`대신 `ProcessImageField`사용
 
@@ -143,6 +144,8 @@
           options={'quality': 60}, # 원본 quality의 60%로 유지
       )
   ```
+
+* `image_thumbnail`이 실행되었을 때 해당 파일이 생성됨
 
 ### browser cashing
 
