@@ -148,17 +148,16 @@
     path('', views.index)
     ```
 
-  예시) **기본 구조**
+  **기본 구조(필수사항)**
 
   ```python
-  from django.contrib import admin
   from django.urls import path
-  from pages import views
+  from . import views
   
-  urlpatterns = [
-      path('admin/', admin.site.urls),
-      path('index/', views.index)
-  ]
+  app_name = '[url로 지정할 이름]' # 없어도 됨
+  
+  # 없으면 error 발생. empty list라도 만들어놓아야함
+  urlpatterns = [] 
   
   ```
 
@@ -181,7 +180,7 @@
       content = models.TextField()
   ```
 
-* migration step
+* migration step(테이블 생성)
 
   * git과 같이 스냅샷을 찍어 버전관리함
   * `sql`문을 사용하여 `delete table`을 통해 테이블을 삭제하는것 보다는 django ORM을 통하여 id를 사용하여 table 삭제명령을 하는 것이 좋음
@@ -196,5 +195,46 @@
 
        **0001 : migration파일의 id**
 
-     * 
+     * **\__init__.py**파일은 삭제하면 안됨
+     
+  2. migrate하기
+  
+     ```
+     $ python manage.py migrate
+     ```
+  
+* **데이터베이스 무효화(가장 강력) **
+
+  * 테이블 날리고 다시 생성
+
+  ```
+  python manage.py migrate [APP_NAME] zero && python manage.py migrate
+  또는
+  python manage.py migrate [APP_NAME] zero && python manage.py migrate [APP_NAME]
+  ```
+
+  
+
+### admin.py
+
+* 해당 모델 클래스를 등록하면 django admin페이지에서 관련내용을 볼 수 있음
+
+  ```python
+  admin.py
+  
+  from django.contrib import admin
+  from .models import [클래스이름]
+  
+  # Register your models here.
+  admin.site.register([클래스이름])
+  ```
+
+* admin페이지에 접근하기 위해 `superuser`를 생성해야 함
+
+  ```git
+  $ python manage.py createsuperuser
+  ```
+
+  * 아이디와 비밀번호는 필수로 지정해야하고, 이메일은 `enter`로 빈 값으로 넘어갈 수 있음
+  * 생성한 계정으로 `/admin/`경로로 admin페이지에 접근하여 사용할 수 있음
 

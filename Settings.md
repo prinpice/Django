@@ -170,3 +170,69 @@ $ python manage.py startapp [앱 이름]
 
    **트레일링 콤마 붙이는 것을 표준으로 함(마지막 인자에도 콤마 붙임)**
 
+### url 추가
+
+**기본구조(필수사항)**
+
+```python
+from django.contrib import admin
+from django.urls import path
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]
+```
+
+* 앱으로 이동할 url을 추가
+
+  * 앱 안에 `urls.py`파일이 존재해야함
+
+    `include`를 import 하고, 원하는 url 지정해줌
+
+    ```python
+    from django.contrib import include
+    
+    urlpatterns = [
+        path('[url주소]/', include('[앱이름].urls'))
+    ]
+    ```
+
+* 앱 안의 함수로 바로 이동가능함
+
+  * 사용하고자 하는 앱의 `views`를 import하여 사용함
+
+    ```python
+    from [앱이름] import views
+    
+    urlpatterns = [
+        path('[url주소]/', views.[함수이름])
+    ]
+    ```
+  
+  * 경로의 이름을 지정하여 사용가능함
+  
+    ```python
+    urlpatterns = [
+        path('[url주소]', views.[함수이름], name='[경로(를 간단하게 사용할 )이름]')
+    ]
+    ```
+
+  ```python
+  from django.contrib import admin, include
+  from django.urls import path
+  from posts import views
+  
+  urlpatterns = [
+      path('admin/', admin.site.urls),
+      path('posts/', include('posts.urls')),
+      path('home/', path.views, name="home"),
+      
+  ]
+  ```
+
+
+
+
+
+
+
